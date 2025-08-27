@@ -9,6 +9,8 @@ using test_shopify_app.Services;
 using test_shopify_app.Token;
 
 var builder = WebApplication.CreateBuilder(args);
+var port = Environment.GetEnvironmentVariable("PORT") ?? "80";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 // ----------------------------
 // Add services to the container
@@ -17,11 +19,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 // ✅ Enable CORS for React frontend (localhost:5175)
+var frontendUrl = builder.Configuration["FrontendUrl"] ?? "http://localhost:5173";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5175", "http://localhost:5176", "http://localhost:5174", "http://localhost:5173", "http://localhost:5177")
+        policy.WithOrigins(frontendUrl)
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -29,7 +32,7 @@ builder.Services.AddCors(options =>
 
 // ✅ Database Context
 builder.Services.AddDbContext<AppDBcontext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ✅ AutoMapper and Services
 builder.Services.AddAutoMapper(typeof(DtoAutomapper));

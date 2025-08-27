@@ -191,3 +191,4 @@ C:\Users\joshua\source\repos\test-shopify-app\test-shopify-app\obj\Debug\net8.0\
 C:\Users\joshua\source\repos\test-shopify-app\test-shopify-app\obj\Debug\net8.0\test-shopify-app.pdb
 C:\Users\joshua\source\repos\test-shopify-app\test-shopify-app\obj\Debug\net8.0\test-shopify-app.genruntimeconfig.cache
 C:\Users\joshua\source\repos\test-shopify-app\test-shopify-app\obj\Debug\net8.0\ref\test-shopify-app.dll
+C:\Users\joshua\source\repos\test-shopify-app\test-shopify-app\obj\Debug\net8.0\test-shopify-app.sourcelink.json
